@@ -8,8 +8,8 @@ public class App {
     public static void main( String[] args ) {
     	Scanner scanner = new Scanner(System.in);
     	ReadTxtFileService readTxtFileService = new ReadTxtFileService();
-    	DecryptMessageService descryptMessageService = new DecryptMessageService();
-    	EncryptMessageService encryptMessageService = new EncryptMessageService();
+    	DecryptMessageService decryptMessageService = new DecryptMessageService();
+		EncryptMessageService encryptMessageService = new EncryptMessageService();
     	SaveIntoTxtFileService saveIntoTxtFileService = new SaveIntoTxtFileService();
     	
     	System.out.println("Greetings Great Roman Emperor Caesar, press letter E for encrypt message or letter D for descrypt message. We need to know next steps to win the war.");
