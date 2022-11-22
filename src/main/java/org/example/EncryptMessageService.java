@@ -14,7 +14,7 @@ public class EncryptMessageService {
 		
 		  /// Loop aby se dávali char v listo {z, a, u, t, o, c, i, m,e} postupne do noveho listu {80, 52, 70......} a potom se prevedl tento list integru na encryptle list.	
 												
-		 
+		 //pomoc tady
 			 
 		char a='1';
 		char b='2';
