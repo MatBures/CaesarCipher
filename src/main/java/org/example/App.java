@@ -14,6 +14,7 @@ public class App {
     	
     	System.out.println("Greetings Great Roman Emperor Caesar, press letter E for encrypt message or letter D for descrypt message. We need to know next steps to win the war.");
     	
+    	//testbranch
     	//crazy
     	String text = scanner.next();
 
