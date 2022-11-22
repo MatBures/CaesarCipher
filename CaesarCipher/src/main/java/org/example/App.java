@@ -40,7 +40,7 @@ public class App {
 }
 
 
-        //TODO:   C:\Users\Jakub\Desktop\Caesar\MessageDescrypt.txt
+        //TODO:   C:\Users\Jakub\Desktop\Caesar\MessageEnscrypt.txt
         /**
          * OK, we played some games and had fun.
          * Let's start something more serious.
