@@ -26,7 +26,7 @@ public class ReadTxtFileService {
 				}
 			
 			} 
-		//	fileContent = br.lines().collect(Collectors.joining()); alternativní zápis od 19-28 řádku
+
 		} catch (Exception e) {
 			System.out.println("Reading txt file failed");
 
@@ -34,5 +34,5 @@ public class ReadTxtFileService {
 
 		return fileContent;
 
-	} ///C:\Users\Jakub\Desktop\Caesar\MessageEnscryptt.txt
+	}
 }
