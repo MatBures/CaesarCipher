@@ -1,14 +1,15 @@
 package org.example;
-
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
-//TODO: REMOVE unused imports
-//TODO: add comment to the class
-//TODO: add comment to the methods
+/**
+ * This service is providing the saving of the text files.
+ */
 public class SaveIntoTxtFileService {
+    /**
+     * Takes user input in the console -> Path where to save the file.
+     * Then the file is saved.
+     */
 
     public void savingEncryptedMessage(String encryptedTextToSave) {
         Scanner scanner = new Scanner(System.in);

@@ -17,34 +17,44 @@ public class DecryptMessageService {
      * @return - Decrypted text in String format
      */
     public String decryptMessage(String textToDecrypt) {
-        // TODO: replace all commentaries with english version
+
+        //Creating lists and arrays to make this method work.
         List<Integer> listOfIntegersToDecrypt = new ArrayList<>();
         List<Integer> listOfDecryptedIntegers = new ArrayList<>();
-        byte[] messageInBytesArray = textToDecrypt.getBytes(StandardCharsets.UTF_8); //Veme to String (textToDecrypt) a rozdělí to ten String na pole [] v bytech.
-        byte[] decryptedBytesArray = new byte[textToDecrypt.length()]; //vytvoří se array bytů a musí se určit jak je velký, to je potřeba vždy. Když se vytváří pole, musíš mu říct jak je velký!
 
+        //Works with String (textToDecrypt) and split it to arrays [] in bytes.
+        byte[] messageInBytesArray = textToDecrypt.getBytes(StandardCharsets.UTF_8);
+
+        //Set size of an array []
+        byte[] decryptedBytesArray = new byte[textToDecrypt.length()];
+
+        //Loop that changing bytes to integers and adding to listOfIntegersToDecrypt.
         for (int i =0; i< messageInBytesArray.length; i++) {
             byte singleByte = messageInBytesArray[i];
-            listOfIntegersToDecrypt.add(Integer.valueOf(singleByte)); // převadí číslo bytu na číslo v integru aby se s ním lépe pracovalo a přídává se do listu.
+            listOfIntegersToDecrypt.add(Integer.valueOf(singleByte));
         }
-
+        //Loop that modifies integers in listOfIntegersToDecrypt and changing them with variable cypherKey and saving them to listOfEncryptedIntegers
         for (int i =0; i< listOfIntegersToDecrypt.size(); i++) {
             Integer valueToCypher = listOfIntegersToDecrypt.get(i);
-            Integer cypheredValue = valueToCypher - cypherMod; // modifikuje integry v listu proměnou cypherKey a ukládá do listOfEncryptedIntegers
-            //TODO: Explain in commentaries "magic numbers" like 97, 26
-            if (cypheredValue < 97) { //kdyz je cypheredValue menší než 97 (aby se převedlo do jiného znaku, MUSÍ začit znova po zpátku abecedy (logicky)
-                cypheredValue = cypheredValue + 26; //kdyz je cypheredValue menší než 97 (aby se převedlo do jiného písmene, MUSÍ začit znova po zpátku abecedy (logicky)
-            }
-            listOfDecryptedIntegers.add(cypheredValue);
+            Integer cypheredValue = valueToCypher - cypherMod;
+
+        //This IF is needed when cypherValue is less than 97, it needs to start from the number of begging character of alphabet "a".
+        if (cypheredValue < 97) {
+
+        //To start from opposite way of alphabet you need to add +26 to cypheredValue.
+            cypheredValue = cypheredValue + 26;
         }
+        listOfDecryptedIntegers.add(cypheredValue);
+        }
+
+        //Loop that changes integers to bytes.
         for(int i =0; i< listOfDecryptedIntegers.size(); i++) {
-            byte encryptedByteValue = listOfDecryptedIntegers.get(i).byteValue(); // Z listu se vezme 1. pozice = index i a .bytevalue = se změní zpátky na byte.
-            decryptedBytesArray[i] = encryptedByteValue; //do pole encryptedBytesArray přidá se 1. hodnota
+            byte encryptedByteValue = listOfDecryptedIntegers.get(i).byteValue();
+            decryptedBytesArray[i] = encryptedByteValue;
         }
 
         String decryptedMessage = new String(decryptedBytesArray, StandardCharsets.UTF_8);
 
         return decryptedMessage;
-
     }
 }
