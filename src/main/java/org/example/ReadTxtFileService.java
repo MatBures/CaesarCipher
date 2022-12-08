@@ -24,15 +24,12 @@ public class ReadTxtFileService {
 				} else {
 					wholeFileHasBeenRead = true;
 				}
-			
-			} 
+			}
 
 		} catch (Exception e) {
 			System.out.println("Reading txt file failed");
-
 		}
 
 		return fileContent;
-
 	}
 }

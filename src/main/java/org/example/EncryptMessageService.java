@@ -35,10 +35,7 @@ public class EncryptMessageService {
 		}
 
 		String encryptedMessage = new String(encryptedBytesArray, StandardCharsets.UTF_8);
-		System.out.println(encryptedMessage);
 
 		return encryptedMessage;
 	}
 }
-
-///  C:\Users\Jakub\Desktop\Caesar\MessageEnscrypt.txt

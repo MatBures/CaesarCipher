@@ -13,7 +13,7 @@ public class DecryptMessageService {
 
         List<Integer> listOfIntegersToDecrypt = new ArrayList<Integer>();
         List<Integer> listOfDecryptedIntegers = new ArrayList<Integer>();
-        byte[] messageInBytesArray = textToDecrypt.getBytes(StandardCharsets.UTF_8); //Veme to String (textToEncrypt) a rozdělí to ten String na pole [] v bytech.
+        byte[] messageInBytesArray = textToDecrypt.getBytes(StandardCharsets.UTF_8); //Veme to String (textToDecrypt) a rozdělí to ten String na pole [] v bytech.
         byte[] decryptedBytesArray = new byte[textToDecrypt.length()]; //vytvoří se array bytů a musí se určit jak je velký, to je potřeba vždy. Když se vytváří pole, musíš mu říct jak je velký!
 
         for (int i =0; i< messageInBytesArray.length; i++) {
@@ -35,9 +35,8 @@ public class DecryptMessageService {
         }
 
         String decryptedMessage = new String(decryptedBytesArray, StandardCharsets.UTF_8);
-        System.out.println(decryptedMessage);
 
         return decryptedMessage;
-// C:\Users\Jakub\Desktop\Caesar\MessageDescrypt.txt zkouška
+
     }
 }
