@@ -1,18 +1,25 @@
 package org.example;
 
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Service for decrypting any message by using the Caesars cipher algorithm.
+ */
 public class DecryptMessageService {
-    private Charset charset = StandardCharsets.UTF_8;
-    private int cypherMod = 5; //Tady se upravuje (modifikuje) podle čeho se šifruje
+    private int cypherMod = 5; // The key for caesar cipher algorithm. The letters in alphabet will be shifted by this number.
 
+    /**
+     * Decrypts message using the Caesars cipher algorithm.
+     *
+     * @param textToDecrypt - Text that should be decrypted
+     * @return - Decrypted text in String format
+     */
     public String decryptMessage(String textToDecrypt) {
-
-        List<Integer> listOfIntegersToDecrypt = new ArrayList<Integer>();
-        List<Integer> listOfDecryptedIntegers = new ArrayList<Integer>();
+        // TODO: replace all commentaries with english version
+        List<Integer> listOfIntegersToDecrypt = new ArrayList<>();
+        List<Integer> listOfDecryptedIntegers = new ArrayList<>();
         byte[] messageInBytesArray = textToDecrypt.getBytes(StandardCharsets.UTF_8); //Veme to String (textToDecrypt) a rozdělí to ten String na pole [] v bytech.
         byte[] decryptedBytesArray = new byte[textToDecrypt.length()]; //vytvoří se array bytů a musí se určit jak je velký, to je potřeba vždy. Když se vytváří pole, musíš mu říct jak je velký!
 
@@ -24,6 +31,7 @@ public class DecryptMessageService {
         for (int i =0; i< listOfIntegersToDecrypt.size(); i++) {
             Integer valueToCypher = listOfIntegersToDecrypt.get(i);
             Integer cypheredValue = valueToCypher - cypherMod; // modifikuje integry v listu proměnou cypherKey a ukládá do listOfEncryptedIntegers
+            //TODO: Explain in commentaries "magic numbers" like 97, 26
             if (cypheredValue < 97) { //kdyz je cypheredValue menší než 97 (aby se převedlo do jiného znaku, MUSÍ začit znova po zpátku abecedy (logicky)
                 cypheredValue = cypheredValue + 26; //kdyz je cypheredValue menší než 97 (aby se převedlo do jiného písmene, MUSÍ začit znova po zpátku abecedy (logicky)
             }

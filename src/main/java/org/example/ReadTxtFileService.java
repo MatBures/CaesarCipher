@@ -5,8 +5,16 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.Scanner;
 
+/**
+ * This service is providing the reading of the text files.
+ */
 public class ReadTxtFileService {
 
+	/**
+	 * Takes user input in the console -> Path to file that should be read.
+	 * Then file is read from this location.
+	 * @return - String represeting the content of the file that was read.
+	 */
 	public String readTxtFile() {
 		Scanner scanner = new Scanner(System.in);
 		String path = scanner.next();

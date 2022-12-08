@@ -1,8 +1,15 @@
 package org.example;
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
+/**
+ * Application that implements Caesars cipher.
+ * It enables the users to both encrypt and decrypt a messages.
+ *
+ * Messages are read and written down to text files.
+ *
+ * The idea is that two people who are sharing this program,
+ * can send each other encrypted information in text file and decrypt it.
+ */
 public class App {
     public static void main( String[] args ) {
     	Scanner scanner = new Scanner(System.in);
@@ -17,17 +24,23 @@ public class App {
 
 		switch (option) {
 		case "E":
+			// 1. Read text file where the text to encrypt is located
 			System.out.println("Tell us the path for a txt file where is the message for encryption stored.");
-			String fileContent = readTxtFileService.readTxtFile(); //zavola čtení text dokumentu z methody ReadTxtFileService.
-			System.out.println("In text document is: " + fileContent); //zobrazí v konzoli text txt dokumentu
+			String fileContent = readTxtFileService.readTxtFile();
+			System.out.println("In text document is: " + fileContent);
+
+			// 2. Encrypt the text and store it in encryptedTextToSaveVariable
 			String encryptedTextToSave = encryptMessageService.encryptMessage(fileContent);
-			System.out.println("The message was encrypted to : " + encryptedTextToSave); //zavolá encrypting message methodu a použije ji, DULEŽITÉ !!
+			System.out.println("The message was encrypted to : " + encryptedTextToSave);
+
+			// 3. Store the encrypted text to text file.
 			System.out.println("Tell us the path where you want to save your encrypted message.");
-			saveIntoTxtFileService.savingEncryptedMessage(encryptedTextToSave); //zavolá saveIntoTxtFileService metodu která naskenuje path + uloží txt dokument.
+			saveIntoTxtFileService.savingEncryptedMessage(encryptedTextToSave);
 			System.out.println("Your encrypted message was saved.");
 			break;
 
 		case "D":
+			// TODO: Fix the commentaries simmilar to option "E"
 			System.out.println("Tell us the path to a txt file where is the message for decryption stored.");
 			fileContent = readTxtFileService.readTxtFile(); //zavola čtení text dokumentu z methody ReadTxtFileService.
 			System.out.println("In text document is: " + fileContent); //zobrazí v konzoli text txt dokumentu
@@ -42,8 +55,11 @@ public class App {
 			System.out.println("Unknown command Emperor. You need to choose letter E for encrypt or D for decrypt.");
 			break;
 		}
-    }               //-----------------------------------------------------------------//
-}                  //__________________RYCHLÉ ZADÁVÁNÍ CEST V POČÍTAČI________________//
+    }
+}
+//TODO:  REMOVE all commentaries bellow this line, they have no place in the last version that will go to customer.
+
+//__________________RYCHLÉ ZADÁVÁNÍ CEST V POČÍTAČI________________//
         //TODO:   C:\Users\Jakub\Desktop\Caesar\MessageEnscrypt.txt C:\Users\Jakub\Desktop\Caesar\MessageDescrypt.txt  C:\Users\Jakub\Desktop\Caesar\encrypted.txt C:\Users\Jakub\Desktop\Caesar\decrypted.txt
         /**
          * OK, we played some games and had fun.

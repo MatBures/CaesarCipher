@@ -1,13 +1,11 @@
 package org.example;
 
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+//TODO: fix commentaries same way as DecryptMessageService
 public class EncryptMessageService {
-	private Charset charset = StandardCharsets.UTF_8;
 	private int cypherKey = 5; //Tady se upravuje (modifikuje) podle čeho se šifruje
 	public String encryptMessage(String textToEncrypt) { //používat listy (praktičktější a uměj víc věcí)
 		List<Integer> listOfIntegersToCypher = new ArrayList<Integer>();

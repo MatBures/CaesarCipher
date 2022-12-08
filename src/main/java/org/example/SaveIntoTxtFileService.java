@@ -5,6 +5,9 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
+//TODO: REMOVE unused imports
+//TODO: add comment to the class
+//TODO: add comment to the methods
 public class SaveIntoTxtFileService {
 
     public void savingEncryptedMessage(String encryptedTextToSave) {
