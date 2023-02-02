@@ -1,42 +1,41 @@
 package org.example;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class EncryptMessageService {
-	
+	private Charset charset = StandardCharsets.UTF_8;
+	private int cypherKey = 5; //Tady se upravuje (modifikuje) podle čeho se šifruje
 	public String encryptMessage(String textToEncrypt) { //používat listy (praktičktější a uměj víc věcí)
-		
-		String[] split = textToEncrypt.split("(?!^)"); // zkratka ctrl+1 vybereš asign to local variable. // ("(?!^)") = regulerní výraz == jakýkoli character
-		List<String> listOfSingleCharactersToEncrypt = Arrays.asList(split);
-//		List<String> encryptedMessage = new ArrayList<>();
-		
-		
-		  /// Loop aby se dávali char v listo {z, a, u, t, o, c, i, m,e} postupne do noveho listu {80, 52, 70......} a potom se prevedl tento list integru na encryptle list.	
-												
-		 //pomoc tady
-			 
-		char a='1';
-		char b='2';
-		char c='3';
-		char d='4';
-		char e='5';
-		char f='6';
-		
-		for (int i = 0; i < listOfSingleCharactersToEncrypt.size(); i++) {
-			listOfSingleCharactersToEncrypt.get(i);
-			int bytes=Integer.parseInt(String.valueOf(listOfSingleCharactersToEncrypt.get(i)));  
-			System.out.println(bytes);
+		List<Integer> listOfIntegersToCypher = new ArrayList<Integer>();
+		List<Integer> listOfEncryptedIntegers = new ArrayList<Integer>();
+		byte[] messageInBytesArray = textToEncrypt.getBytes(StandardCharsets.UTF_8); //Veme to String (textToEncrypt) a rozdělí to ten String na pole [] v bytech.
+		byte[] encryptedBytesArray = new byte[textToEncrypt.length()]; //vytvoří se array bytů a musí se určit jak je velký, to je potřeba vždy. Když se vytváří pole, musíš mu říct jak je velký!
+
+		for (int i =0; i< messageInBytesArray.length; i++) {
+			byte singleByte = messageInBytesArray[i];
+			listOfIntegersToCypher.add(Integer.valueOf(singleByte)); // převadí číslo bytu na číslo v integru aby se s ním lépe pracovalo a přídává se do listu.
 		}
 
-		 
-	//	System.out.println(listOfSingleCharactersToEncrypt);
-		 
-	
+		for (int i =0; i< listOfIntegersToCypher.size(); i++) {
+			Integer valueToCypher = listOfIntegersToCypher.get(i);
+			Integer cypheredValue = valueToCypher + cypherKey; // modifikuje integry v listu proměnou cypherKey a ukládá do listOfEncryptedIntegers
+			if (cypheredValue > 122) { //kdyz je cypheredValue větší než 122 (aby se převedlo do jiného písmene, MUSÍ začit znova od abecedy (logicky)
+				cypheredValue = cypheredValue - 26; //kdyz je cypheredValue větší než 122 (aby se převedlo do jiného písmene, MUSÍ začit znova od abecedy (logicky)
+			}
+			listOfEncryptedIntegers.add(cypheredValue);
+		}
 
-		return "";
+		for(int i =0; i< listOfEncryptedIntegers.size(); i++) {
+			byte encryptedByteValue = listOfEncryptedIntegers.get(i).byteValue(); // Z listu se vezme 1. pozice = index i a .bytevalue = se změní zpátky na byte.
+			encryptedBytesArray[i] = encryptedByteValue; //do pole encryptedBytesArray přidá se 1. hodnota
+		}
+
+		String encryptedMessage = new String(encryptedBytesArray, StandardCharsets.UTF_8);
+
+		return encryptedMessage;
 	}
 }
-	
-
-///  C:\Users\Jakub\Desktop\Caesar\MessageEnscrypt.txt

@@ -24,15 +24,12 @@ public class ReadTxtFileService {
 				} else {
 					wholeFileHasBeenRead = true;
 				}
-			
-			} 
-		//	fileContent = br.lines().collect(Collectors.joining()); alternativní zápis od 19-28 řádku
+			}
+
 		} catch (Exception e) {
 			System.out.println("Reading txt file failed");
-
 		}
 
 		return fileContent;
-
-	} ///C:\Users\Jakub\Desktop\Caesar\MessageEnscryptt.txt
+	}
 }
